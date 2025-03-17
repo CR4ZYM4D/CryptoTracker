@@ -32,9 +32,8 @@ fun CoinListItem(coinUI:CoinUi ,
     ) {
 
     Row (modifier = modifier
-        .fillMaxWidth()
-        .clickable(onClick = onClick)
-        .padding(16.dp),
+        .padding(horizontal = 16.dp , vertical = 4.dp)
+        .clickable(onClick = onClick),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ){

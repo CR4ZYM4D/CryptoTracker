@@ -11,6 +11,6 @@ data class CoinDTO(
     val symbol:String,
     val priceUsd:Double,
     val changePercent24Hr:Double?,
-    val marketCapUSD:Double
+    val marketCapUsd:Double
 
 )

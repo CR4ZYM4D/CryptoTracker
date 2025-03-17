@@ -13,7 +13,7 @@ fun CoinDTO.toCoin(): Coin{
         rank = rank,
         priceUSD = priceUsd,
         changePercent24Hr = changePercent24Hr,
-        marketCapUSD = marketCapUSD,
+        marketCapUSD = marketCapUsd,
     )
 
 }
