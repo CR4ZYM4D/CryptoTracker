@@ -47,7 +47,7 @@ fun PriceChange(change:DisplayableNumber , modifier: Modifier = Modifier){
             modifier = Modifier.size(20.dp)
         )
         Text(text = "${change.formattedNumber} %",
-            fontWeight = FontWeight.SemiBold,
+            fontWeight = FontWeight.Medium,
             color = color,
             fontSize = 12.sp
         )

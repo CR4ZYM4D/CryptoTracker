@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
 
                     val viewModel = koinViewModel<CoinListViewModel>()
                     val state by viewModel.state.collectAsStateWithLifecycle()
-                    CoinListScreen(state = state , modifier = Modifier.padding(innerPadding))
+                    CoinListScreen(state = state ,event = viewModel.events ,  modifier = Modifier.padding(innerPadding))
                 }
             }
         }
