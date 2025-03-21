@@ -6,4 +6,7 @@
     <string name="SERIALIZATION">Serialization error. Please try later</string>
     <string name="NO_INTERNET">No internet connection. Check your connection and try again</string>
     <string name="TOO_MANY_REQUESTS">Too many requests. Please try later</string>
+    <string name="market_cap">Market Cap</string>
+    <string name="price">Price</string>
+    <string name="change_24hr">Last 24 Hours</string>
 </resources>

@@ -57,7 +57,7 @@ fun PriceChange(change:DisplayableNumber , modifier: Modifier = Modifier){
 
 @PreviewLightDark
 @Composable
-private fun priceChange(change: DisplayableNumber = previewCoin.toCoinUi().changePercent24Hr){
+private fun PreviewPriceChange(change: DisplayableNumber = previewCoin.toCoinUi().changePercent24Hr){
 
     CryptoTrackerTheme {
         PriceChange(change = change , modifier = Modifier.background(MaterialTheme.colorScheme.background))

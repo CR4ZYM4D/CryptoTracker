@@ -1,5 +1,6 @@
 package com.plcoding.cryptotracker.crypto.presentation.coin_list
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,9 +19,8 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
-import com.plcoding.cryptotracker.R
-import com.plcoding.cryptotracker.core.domain.util.NetworkError
 import com.plcoding.cryptotracker.core.presentation.util.toString
+import com.plcoding.cryptotracker.crypto.presentation.coin_detail.CoinDetailScreen
 import com.plcoding.cryptotracker.crypto.presentation.coin_list.components.CoinListItem
 import com.plcoding.cryptotracker.crypto.presentation.coin_list.components.CoinListState
 import com.plcoding.cryptotracker.crypto.presentation.coin_list.components.previewCoin
@@ -65,7 +65,9 @@ fun CoinListScreen(state: CoinListState,
             .fillMaxSize()
         ) {
             items(state.coinList){coinUI->
-                CoinListItem(coinUI = coinUI , onClick={} , modifier = modifier.fillMaxWidth())
+                CoinListItem(coinUI = coinUI ,
+                    onClick={} ,
+                    modifier = modifier.fillMaxWidth())
             }
         }
     }
@@ -75,7 +77,7 @@ fun CoinListScreen(state: CoinListState,
 
 @PreviewLightDark
 @Composable
-private fun coinListScreen(){
+private fun PreviewCoinListScreen(){
 
     CryptoTrackerTheme {
         CoinListScreen(state = CoinListState(
