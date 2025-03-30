@@ -48,19 +48,19 @@ fun CoinListItem(coinUI:CoinUi ,
                 text = coinUI.symbol,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.ExtraBold,
-                fontSize = 20.sp
+                fontSize = 16.sp
             )
             Text(
                 text = coinUI.name,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
-                fontSize = 16.sp
+                fontSize = 12.sp
             )
         }
         Column (modifier = modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.End){
             Text(text = "$ ${coinUI.priceUSD.formattedNumber}" ,
-                fontSize = 16.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.W200,
                 color = MaterialTheme.colorScheme.primary
             )

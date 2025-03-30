@@ -11,7 +11,7 @@ data class CoinUi(
     val name:String,
     val rank:Int,
     val symbol:String,
-    val id:String?,
+    val id:String,
     val marketCapUSD:DisplayableNumber,
     val priceUSD:DisplayableNumber,
     val changePercent24Hr:DisplayableNumber,

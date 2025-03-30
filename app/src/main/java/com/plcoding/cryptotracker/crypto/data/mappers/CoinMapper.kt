@@ -1,7 +1,11 @@
 package com.plcoding.cryptotracker.crypto.data.mappers
 
 import com.plcoding.cryptotracker.crypto.data.networking.dto.CoinDTO
+import com.plcoding.cryptotracker.crypto.data.networking.dto.CoinPriceDto
 import com.plcoding.cryptotracker.crypto.domain.Coin
+import com.plcoding.cryptotracker.crypto.domain.CoinPrice
+import java.time.Instant
+import java.time.ZoneId
 
 fun CoinDTO.toCoin(): Coin{
 
@@ -16,4 +20,13 @@ fun CoinDTO.toCoin(): Coin{
         marketCapUSD = marketCapUsd,
     )
 
+}
+
+fun CoinPriceDto.toCoinPrice():CoinPrice{
+    return CoinPrice(
+        priceUsd = priceUsd,
+        time = Instant
+            .ofEpochMilli(time)
+            .atZone(ZoneId.of("UTC"))
+    )
 }
