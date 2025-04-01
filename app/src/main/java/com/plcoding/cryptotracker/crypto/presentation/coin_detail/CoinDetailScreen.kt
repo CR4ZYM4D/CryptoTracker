@@ -65,7 +65,7 @@ fun CoinDetailScreen( state:CoinListState,
         Column (modifier = modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp),
+            .padding(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
@@ -73,21 +73,21 @@ fun CoinDetailScreen( state:CoinListState,
                 contentDescription = coin.symbol,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
-                    .size(180.dp)
-                    .padding(20.dp)
+                    .size(150.dp)
+                    .padding(15.dp)
             )
             Text(
                 text = coin.name,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.ExtraBold,
-                fontSize = 50.sp
+                fontSize = 40.sp
             )
             Text(
                 text = coin.symbol,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Medium,
-                fontSize = 25.sp,
-                modifier = Modifier.padding(bottom = 15.dp)
+                fontSize = 20.sp,
+                modifier = Modifier.padding(bottom = 10.dp)
             )
 
             FlowRow (modifier = Modifier.fillMaxWidth(),

@@ -30,10 +30,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.withContext
+import androidx.compose.material3.HorizontalDivider as HorizontalDivider1
+import androidx.compose.material3.HorizontalDivider as HorizontalDivider
 
 @Composable
 fun CoinListScreen(state: CoinListState,
                    event: Flow<CoinListEvent>,
+                   onAction: (CoinListAction) -> Unit,
                    modifier:Modifier = Modifier){
 
     val context = LocalContext.current
@@ -66,7 +69,7 @@ fun CoinListScreen(state: CoinListState,
         ) {
             items(state.coinList){coinUI->
                 CoinListItem(coinUI = coinUI ,
-                    onClick={} ,
+                    onClick={onAction(CoinListAction.OnCoinClick(coinUI))} ,
                     modifier = modifier.fillMaxWidth())
             }
         }
@@ -83,7 +86,8 @@ private fun PreviewCoinListScreen(){
         CoinListScreen(state = CoinListState(
             coinList = (1..50).map { previewCoin.toCoinUi().copy(id = it.toString()) }),
             modifier = Modifier.background(MaterialTheme.colorScheme.background),
-            event = emptyFlow()
+            event = emptyFlow(),
+            onAction = {}
         )
     }
 
