@@ -1,5 +1,6 @@
 package com.plcoding.cryptotracker.crypto.data.mappers
 
+import android.provider.Settings
 import com.plcoding.cryptotracker.crypto.data.networking.dto.CoinDTO
 import com.plcoding.cryptotracker.crypto.data.networking.dto.CoinPriceDto
 import com.plcoding.cryptotracker.crypto.domain.Coin
@@ -27,6 +28,6 @@ fun CoinPriceDto.toCoinPrice():CoinPrice{
         priceUsd = priceUsd,
         time = Instant
             .ofEpochMilli(time)
-            .atZone(ZoneId.of("UTC"))
+            .atZone(ZoneId.systemDefault())
     )
 }

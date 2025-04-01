@@ -23,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -30,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -124,28 +126,45 @@ fun CoinDetailScreen( state:CoinListState,
                 var selectedDataPoint by remember {
                     mutableStateOf<DataPoint?>(null)
                 }
+
+                var labelWidth by remember {
+                    mutableFloatStateOf(0f)
+                }
+
+                var chartWidth by remember {
+                    mutableFloatStateOf(0f)
+                }
+
+                val numVisiblePoints = if(labelWidth>0){
+                    ((chartWidth -2.5f*labelWidth)/labelWidth).toInt()
+                }else 0
+
+                val startIndex = (coin.history.lastIndex - numVisiblePoints).coerceAtLeast(0)
+
                 LineChart(
                     dataPoints = coin.history,
                     chartStyle = ChartStyle(
-                        chartLineColor = TODO(),
-                        unselectedColor = TODO(),
-                        selectedColor = TODO(),
-                        gridLineThickness = TODO(),
-                        axisLineThickness = TODO(),
-                        labelFontSize = TODO(),
-                        minYLabelSpacing = TODO(),
-                        verticalPadding = TODO(),
-                        horizontalPadding = TODO(),
-                        xLabelSpacing = TODO()
+                        chartLineColor = MaterialTheme.colorScheme.primary,
+                        unselectedColor = MaterialTheme.colorScheme.secondary,
+                        selectedColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                        gridLineThickness = 2f,
+                        axisLineThickness = 2f,
+                        labelFontSize = 14.sp,
+                        minYLabelSpacing = 12.dp,
+                        verticalPadding = 10.dp,
+                        horizontalPadding = 10.dp,
+                        xLabelSpacing = 8.dp
                     ),
-                    visiblePointIndices = coin.history.indices,
+                    visiblePointIndices = startIndex .. coin.history.lastIndex,
                     unit = "$",
                     modifier = Modifier
                         .fillMaxWidth()
                         .aspectRatio(16 / 9f)
+                        .onSizeChanged { chartWidth= it.width.toFloat() }
                     ,
                     selectedDataPoint = selectedDataPoint,
-                    onSelectedDataPoint = { selectedDataPoint = it }
+                    onSelectedDataPoint = { selectedDataPoint = it },
+                    onXLabelWidthChange = { labelWidth = it }
                 )
             }
 
