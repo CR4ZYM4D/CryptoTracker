@@ -159,10 +159,6 @@ fun LineChart(
                 right = viewPortRightX
             )
 
-        drawRect(color = Color.Green.copy(alpha = 0.3f) ,
-            topLeft = viewPort.topLeft ,
-            size = viewPort.size)
-
         yLabelTextLayoutResults.forEachIndexed { index, result ->
 
             val x = horizontalPaddingPx + maxYLabelWidth - result.size.width

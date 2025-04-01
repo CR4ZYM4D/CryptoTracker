@@ -1,5 +1,7 @@
 package com.plcoding.cryptotracker.crypto.presentation.coin_detail
 
+import android.provider.ContactsContract.Data
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -8,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,6 +22,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -110,6 +117,36 @@ fun CoinDetailScreen( state:CoinListState,
                         contentColor = contentColor
                     )
                 }
+            }
+
+            AnimatedVisibility(visible = coin.history.isNotEmpty()) {
+
+                var selectedDataPoint by remember {
+                    mutableStateOf<DataPoint?>(null)
+                }
+                LineChart(
+                    dataPoints = coin.history,
+                    chartStyle = ChartStyle(
+                        chartLineColor = TODO(),
+                        unselectedColor = TODO(),
+                        selectedColor = TODO(),
+                        gridLineThickness = TODO(),
+                        axisLineThickness = TODO(),
+                        labelFontSize = TODO(),
+                        minYLabelSpacing = TODO(),
+                        verticalPadding = TODO(),
+                        horizontalPadding = TODO(),
+                        xLabelSpacing = TODO()
+                    ),
+                    visiblePointIndices = coin.history.indices,
+                    unit = "$",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(16 / 9f)
+                    ,
+                    selectedDataPoint = selectedDataPoint,
+                    onSelectedDataPoint = { selectedDataPoint = it }
+                )
             }
 
         }
