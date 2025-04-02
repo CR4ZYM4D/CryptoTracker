@@ -293,7 +293,7 @@ fun LineChart(
 
         drawPath(path = linePath ,
             color = chartStyle.chartLineColor,
-            style = Stroke(width = 2f))
+            style = Stroke(width = 4f))
 
         drawPoints.forEachIndexed { it, drawPoint ->
 

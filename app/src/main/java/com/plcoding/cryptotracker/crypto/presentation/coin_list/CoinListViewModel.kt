@@ -37,18 +37,19 @@ class CoinListViewModel(private val coinDataSource: CoinDataSource):ViewModel(){
         when(action){
             is CoinListAction.OnCoinClick ->{
                 _state.update { it.copy(selectedCoin = action.coinUI) }
+                selectCoin(action.coinUI)
             }
         }
     }
 
-    private fun selectCoin(CoinUI:CoinUi ){
+    private fun selectCoin(coinUI:CoinUi ){
 
-        _state.update { it.copy(selectedCoin = CoinUI) }
+        _state.update { it.copy(selectedCoin = coinUI) }
 
         viewModelScope.launch {
             coinDataSource
                 .getCoinHistory(
-                    coinId = CoinUI.id,
+                    coinId = coinUI.id,
                     startTime = ZonedDateTime.now().minusDays(5),
                     endTime = ZonedDateTime.now()
                 )
@@ -62,6 +63,8 @@ class CoinListViewModel(private val coinDataSource: CoinDataSource):ViewModel(){
                                 .ofPattern("ha\nm/d")
                                 .format(it.time)
                         ) }
+
+                    println(dataPoints)
 
                     _state.update { it.copy(selectedCoin = it.selectedCoin?.copy(history = dataPoints)) }
                 }

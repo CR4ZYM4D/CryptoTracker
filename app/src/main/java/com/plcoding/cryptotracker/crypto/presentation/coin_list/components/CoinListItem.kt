@@ -91,4 +91,5 @@ internal val previewCoin = Coin(
     priceUSD = 100.0,
     changePercent24Hr = 7.0,
     marketCapUSD = 123142351121452.6,
+
 )

@@ -1,6 +1,5 @@
 package com.plcoding.cryptotracker.crypto.presentation.coin_detail
 
-import android.provider.ContactsContract.Data
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -145,15 +144,15 @@ fun CoinDetailScreen( state:CoinListState,
                     dataPoints = coin.history,
                     chartStyle = ChartStyle(
                         chartLineColor = MaterialTheme.colorScheme.primary,
-                        unselectedColor = MaterialTheme.colorScheme.secondary,
-                        selectedColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                        gridLineThickness = 2f,
+                        unselectedColor = MaterialTheme.colorScheme.tertiary,
+                        selectedColor = MaterialTheme.colorScheme.onSurface,
+                        gridLineThickness = 1f,
                         axisLineThickness = 2f,
-                        labelFontSize = 14.sp,
-                        minYLabelSpacing = 12.dp,
-                        verticalPadding = 10.dp,
+                        labelFontSize = 12.sp,
+                        minYLabelSpacing = 10.dp,
+                        verticalPadding = 14.dp,
                         horizontalPadding = 10.dp,
-                        xLabelSpacing = 8.dp
+                        xLabelSpacing = 10.dp
                     ),
                     visiblePointIndices = startIndex .. coin.history.lastIndex,
                     unit = "$",

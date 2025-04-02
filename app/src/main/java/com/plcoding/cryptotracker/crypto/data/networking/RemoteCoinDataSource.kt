@@ -30,7 +30,8 @@ class RemoteCoinDataSource(private val httpClient:HttpClient):CoinDataSource {
         coinId: String,
         startTime: ZonedDateTime,
         endTime: ZonedDateTime
-    ): Result<List<CoinPrice>, NetworkError> {
+    ): Result<List<CoinPrice>, NetworkError>
+    {
         val startMillis = startTime
             .withZoneSameInstant(ZoneId.of("UTC"))
             .toInstant()
